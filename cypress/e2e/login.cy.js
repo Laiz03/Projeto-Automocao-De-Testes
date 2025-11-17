@@ -21,3 +21,19 @@ describe('Login', () => {
     //cy.get('[name="user_name_text"]').should('have.text', "Admin do Sistema") antes do POM
   })
 })
+
+//-----------------------------------------------------------------------------------------
+
+describe('Login', () => {
+   it('Falha no Login - Senha Incorreta', () => {
+    //ARRANGE
+    loginPage.visitar()
+
+    //ACT
+    loginPage.realizarLogin("admin@qabank.com","senhaErrada123")
+
+    //ASSERT
+    loginPage.validarMsgDeCredenciaisInvalidas()
+
+   })
+})
