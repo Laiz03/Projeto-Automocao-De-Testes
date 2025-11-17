@@ -23,25 +23,21 @@ class cadastroPage {
         return cy.get('[data-cy="input-register-password"]')
     }
 
-    get selectInput() {
-        return cy.get('[data-cy="selecte-register-sexo"]')
+    get sexoSelect() {
+        return cy.get('[data-cy="select-register-sexo"]')
     }
 
     get salvarCadastro() {
         return cy.get('[data-cy="btn-register-submit"]')
     }
 
-    /*get usuarioCadastradoTxt () {
-        return cy.get('[name="user_name_text"]')
-    }*/
+    get contaCadastradaComSucessoMsg () {
+        return cy.get('[data-cy="register-message"]')
+    }
 
 //---------------------------------------------------------------------------------------
 
     // 2. Metodos de Ação
-
-    clicarEmCadastrar () {
-        this.cadastrarButton.click()
-    }
 
     preencherNome (name) {
         this.nameInput.type(name)
@@ -55,12 +51,16 @@ class cadastroPage {
         this.passwordInput.type(password)
     }
 
-    selecionarSelect (value) {
-        this.selecionarSelect.select(value)
+    selecionarSexo (sexo) {
+        this.sexoSelect.select(sexo)
     }
 
     salvarCadastroUsuario () {
         this.salvarCadastro.click()
+    }
+
+    validarMensagemDeContaCriadaComSucesso(){
+        this.contaCadastradaComSucessoMsg.should('be.visible').and('contains.text', 'Conta criada com sucesso! Seu Número de Conta é:')
     }
 
 
@@ -68,15 +68,15 @@ class cadastroPage {
 
     // 2. Metodos de Fluxo
 
-    realizarCadastro(name, email, password, value) {
+    realizarCadastro(name, email, password, sexo) {
         this.preencherNome(name)
         this.preencherEmail(email)
         this.preencherSenha(password)
-        this.selecionarSelect(value)
-        this.salvarCadastro.click()
+        this.selecionarSexo(sexo)
+        this.salvarCadastroUsuario()
     }
 
 
 }
 
-export default new cadastroPage();
+export default new cadastroPage()

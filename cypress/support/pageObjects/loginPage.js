@@ -28,6 +28,12 @@ class loginPage {
         return cy.get('[data-cy="login-message"]')
     }
 
+    get criarContaButton () {
+        return cy.get('[data-cy="btn-toggle-register"]')
+    }
+
+    
+
     //---------------------------------------------------------------------------------------
 
     // 2. Metodos de Ação
@@ -50,6 +56,10 @@ class loginPage {
     }
     /*cy.get('[name=submit_button]').click() -- Jeito frágil
       cy.get('[data-cy="btn-login"]').click() // Jeito Resiliente*/
+
+    clicarEmCriarConta() {
+        this.criarContaButton.click()
+    }
 
     //-----------------------------------------------------------------------------------------------------
 

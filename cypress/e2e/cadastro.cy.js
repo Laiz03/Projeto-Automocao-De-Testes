@@ -1,21 +1,22 @@
 import cadastroPage from "../support/pageObjects/cadastroPage"
+import loginPage from "../support/pageObjects/loginPage"
 
 describe('Cadastro', () => {
   it('Cadastro de novo usuário com sucesso', () => {
 
     //arrange
-    cadastroPage.visitar()
+    loginPage.visitar()
+    loginPage.clicarEmCriarConta()
 
   
     //act
-    cadastroPage.clicarEmCadastrar()
+    /*cadastroPage.clicarEmCadastrar()*/
 
     cadastroPage.realizarCadastro("Usuário Teste Novo", "usuario.novo@qabank.com", "senha123", "Feminino")
 
 
     //assert
-    //loginPage.validarConta("Conta criada com sucesso!")
-    
+    cadastroPage.validarMensagemDeContaCriadaComSucesso()
 
   })
 })
